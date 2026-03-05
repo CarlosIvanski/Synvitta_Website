@@ -1,0 +1,16 @@
+{
+  "name": "synvitta-website",
+  "version": "1.0.0",
+  "description": "Static marketing and information site for Synvitta Diagnostics, focused on premium biotech UX and future expansion.",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
+

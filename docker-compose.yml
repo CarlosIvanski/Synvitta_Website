@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    image: synvitta-website:latest
+    container_name: synvitta-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    # Quando tiver SSL, use um proxy (ex.: Caddy/Traefik) ou descomente:
+    # ports:
+    #   - "8080:80"
