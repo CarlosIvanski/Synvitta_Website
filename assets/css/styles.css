@@ -949,15 +949,14 @@ p {
 
 .molecule-image {
   width: 100%;
-  height: 20rem;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
   display: block;
+  vertical-align: middle;
   transition: transform 0.7s var(--easing-soft);
 }
 
 .technology-image-group:hover .molecule-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .molecule-frame-gradient {
@@ -968,8 +967,8 @@ p {
 }
 
 @media (min-width: 1024px) {
-  .molecule-image {
-    height: 30rem;
+  .molecule-frame {
+    max-width: 480px;
   }
 }
 
