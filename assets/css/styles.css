@@ -967,24 +967,6 @@ p {
   pointer-events: none;
 }
 
-/* Covers third-party label text at bottom of microplate image (fully opaque) */
-.molecule-frame-label-mask {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 42%;
-  background: linear-gradient(
-    to top,
-    #071c3b 0%,
-    #071c3b 18%,
-    rgba(7, 28, 59, 0.95) 35%,
-    rgba(7, 28, 59, 0.7) 60%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
-
 @media (min-width: 1024px) {
   .molecule-image {
     height: 30rem;
