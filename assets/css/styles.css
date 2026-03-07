@@ -179,9 +179,11 @@ section {
   margin-inline: auto;
 }
 
-/* Section eyebrow: small uppercase label + thin green line (reference style) */
+/* Section eyebrow: green square + uppercase label + thin green line (Synvitta palette) */
 .section-eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -191,6 +193,39 @@ section {
   padding-bottom: var(--spacing-2);
   border-bottom: 2px solid var(--color-accent);
   width: fit-content;
+}
+
+.section-eyebrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+/* Section titles: blue square (Synvitta palette) */
+.about-content h2,
+.technology-content h2,
+.pipeline-header h2,
+.products-header h2,
+.contact-intro h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.about-content h2::before,
+.technology-content h2::before,
+.pipeline-header h2::before,
+.products-header h2::before,
+.contact-intro h2::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  flex-shrink: 0;
+  border-radius: 2px;
 }
 
 .section-lead {
@@ -566,6 +601,22 @@ p {
     rgba(7, 28, 59, 0.35) 50%,
     rgba(7, 28, 59, 0.5) 100%
   );
+}
+
+/* Covers third-party branding (e.g. label at bottom of hero video) */
+.hero-mask-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background: linear-gradient(
+    to top,
+    rgba(7, 28, 59, 0.98) 0%,
+    rgba(7, 28, 59, 0.7) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .hero-content {
