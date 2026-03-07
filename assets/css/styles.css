@@ -967,6 +967,22 @@ p {
   pointer-events: none;
 }
 
+/* Covers third-party label text at bottom of microplate image */
+.molecule-frame-label-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28%;
+  background: linear-gradient(
+    to top,
+    rgba(7, 28, 59, 0.97) 0%,
+    rgba(7, 28, 59, 0.6) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
 @media (min-width: 1024px) {
   .molecule-image {
     height: 30rem;
@@ -1145,6 +1161,20 @@ p {
   position: relative;
 }
 
+/* Synvitta palette: barra lateral por nível */
+.pipeline-card:has(.pipeline-status-research) {
+  border-left: 4px solid var(--color-accent);
+}
+
+.pipeline-card:has(.pipeline-status-development) {
+  border-left: 4px solid var(--color-primary);
+}
+
+.pipeline-card:has(.pipeline-status-future) {
+  border-left: 4px solid var(--color-primary);
+  border-left-color: #0d3a6e;
+}
+
 .pipeline-card-title {
   font-size: 1.1rem;
   font-weight: 600;
@@ -1160,25 +1190,24 @@ p {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-text-muted);
-  background: rgba(15, 23, 42, 0.06);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 999px;
 }
 
+/* Tags com cores Synvitta: verde e azul */
 .pipeline-status-research {
-  background: rgba(29, 164, 139, 0.12);
-  color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
 }
 
 .pipeline-status-development {
-  background: rgba(7, 28, 59, 0.1);
-  color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .pipeline-status-future {
-  background: rgba(7, 28, 59, 0.08);
-  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  color: #fff;
   letter-spacing: 0.08em;
 }
 
@@ -1189,12 +1218,28 @@ p {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background: rgba(29, 164, 139, 0.04);
-  border: 1px solid rgba(29, 164, 139, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Ícones com cores Synvitta por nível */
+.pipeline-card:has(.pipeline-status-research) .pipeline-icon {
+  background: var(--color-accent-soft);
+  border: 2px solid var(--color-accent);
   color: var(--color-accent);
+}
+
+.pipeline-card:has(.pipeline-status-development) .pipeline-icon {
+  background: var(--color-primary-subtle);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.pipeline-card:has(.pipeline-status-future) .pipeline-icon {
+  background: rgba(7, 28, 59, 0.08);
+  border: 2px solid var(--color-primary-soft);
+  color: var(--color-primary);
 }
 
 .pipeline-icon svg {
