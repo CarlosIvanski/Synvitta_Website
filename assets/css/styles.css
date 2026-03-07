@@ -967,17 +967,19 @@ p {
   pointer-events: none;
 }
 
-/* Covers third-party label text at bottom of microplate image */
+/* Covers third-party label text at bottom of microplate image (fully opaque) */
 .molecule-frame-label-mask {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 28%;
+  height: 42%;
   background: linear-gradient(
     to top,
-    rgba(7, 28, 59, 0.97) 0%,
-    rgba(7, 28, 59, 0.6) 55%,
+    #071c3b 0%,
+    #071c3b 18%,
+    rgba(7, 28, 59, 0.95) 35%,
+    rgba(7, 28, 59, 0.7) 60%,
     transparent 100%
   );
   pointer-events: none;
