@@ -274,9 +274,9 @@ section {
 }
 
 .card {
-  background: var(--color-surface);
+  background: linear-gradient(135deg, rgba(7, 28, 59, 0.04) 0%, rgba(7, 28, 59, 0.08) 100%);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(7, 28, 59, 0.06);
+  border: 1px solid rgba(7, 28, 59, 0.08);
   box-shadow: var(--shadow-subtle);
   padding: var(--spacing-6);
   position: relative;
@@ -1001,6 +1001,9 @@ p {
 
 .product-highlight {
   padding: var(--spacing-6) var(--spacing-6);
+  background: linear-gradient(135deg, rgba(7, 28, 59, 0.04) 0%, rgba(7, 28, 59, 0.08) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(7, 28, 59, 0.08);
 }
 
 .product-card-accent {
