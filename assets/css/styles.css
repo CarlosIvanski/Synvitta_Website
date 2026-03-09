@@ -1107,6 +1107,35 @@ p {
   border: 1px solid rgba(7, 28, 59, 0.12);
 }
 
+.product-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: var(--spacing-8);
+  align-items: flex-start;
+}
+
+.product-info-col {
+  display: flex;
+}
+
+.product-info-grid {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.product-info-card {
+  background: linear-gradient(135deg, #e1e9ff 0%, #d4e2ff 45%, #c4d9ff 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(37, 66, 138, 0.45);
+  padding: var(--spacing-4) var(--spacing-5);
+  box-shadow: 0 12px 30px rgba(7, 28, 59, 0.08);
+}
+
+.product-info-card .product-accordion {
+  border-top: none;
+  padding-top: 0;
+}
+
 .product-card-blue h3,
 .product-card-blue h4,
 .product-card-blue .product-intro {
@@ -1232,19 +1261,19 @@ p {
 }
 
 .product-cta-buttons .btn-primary {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
+  background: #e1e9ff;
+  color: var(--color-primary);
+  border-color: rgba(37, 66, 138, 0.45);
 }
 
 .product-cta-buttons .btn-outline {
-  background: transparent;
+  background: #e1e9ff;
   color: var(--color-primary);
-  border-color: var(--color-primary);
+  border-color: rgba(37, 66, 138, 0.45);
 }
 
 .product-cta-buttons .btn-outline:hover {
-  background: rgba(7, 28, 59, 0.08);
+  background: #d5defc;
 }
 
 .product-cta-note {
@@ -1263,6 +1292,10 @@ p {
   }
   .product-cta-buttons {
     flex-direction: column;
+  }
+  .product-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-6);
   }
 }
 
@@ -1383,9 +1416,9 @@ p {
 }
 
 .card-block {
-  background: linear-gradient(135deg, rgba(7, 28, 59, 0.05) 0%, rgba(7, 28, 59, 0.1) 100%);
+  background: linear-gradient(135deg, #e1e9ff 0%, #d4e2ff 45%, #c4d9ff 100%);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(7, 28, 59, 0.1);
+  border: 1px solid rgba(37, 66, 138, 0.45);
   box-shadow: 0 4px 20px rgba(7, 28, 59, 0.06);
   padding: var(--spacing-6);
   display: flex;
