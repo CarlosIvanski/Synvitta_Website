@@ -960,9 +960,20 @@ p {
   gap: var(--spacing-3);
 }
 
+.pipeline-card-back {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 260px;
+  margin-inline: auto;
+}
+
 .pipeline-card-back .card-block-desc {
   font-style: italic;
   margin-bottom: var(--spacing-2);
+}
+
+.pipeline-card-back .card-block-text {
+  margin-top: 0;
 }
 
 @media (max-width: 900px) {
