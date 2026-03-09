@@ -953,6 +953,16 @@ p {
   height: 16px;
 }
 
+/* Pipeline flip cards: override front alignment to behave like standard cards */
+.pipeline-card-block .flip-card-front {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.pipeline-card-back .card-block-desc {
+  font-style: italic;
+}
+
 @media (max-width: 900px) {
   .about-top {
     grid-template-columns: minmax(0, 1fr);
