@@ -121,5 +121,31 @@ document.addEventListener("DOMContentLoaded", () => {
       contactForm.reset();
     });
   }
+
+  // Mission / Vision flip cards
+  const flipCards = document.querySelectorAll("[data-flip-card]");
+  flipCards.forEach((card) => {
+    if (!(card instanceof HTMLElement)) return;
+
+    const toggleFlip = () => {
+      card.classList.toggle("is-flipped");
+    };
+
+    card.addEventListener("click", toggleFlip);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleFlip();
+      }
+    });
+
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+
+    const title = card.querySelector("h3");
+    if (title && title.textContent) {
+      card.setAttribute("aria-label", `${title.textContent.trim()} details`);
+    }
+  });
 });
 

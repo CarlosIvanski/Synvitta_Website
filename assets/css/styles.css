@@ -835,7 +835,17 @@ p {
 .mission-card,
 .vision-card {
   position: relative;
-  padding-left: calc(var(--spacing-6) + 44px);
+  padding: 0;
+  background: linear-gradient(135deg, #e1e9ff 0%, #d4e2ff 45%, #c4d9ff 100%);
+  border-color: rgba(37, 66, 138, 0.45);
+  color: var(--color-primary);
+}
+
+.mission-card h3,
+.vision-card h3,
+.mission-card p,
+.vision-card p {
+  color: var(--color-primary);
 }
 
 .mv-icon {
@@ -845,8 +855,8 @@ p {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background: rgba(29, 164, 139, 0.06);
-  border: 1px solid rgba(29, 164, 139, 0.18);
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -862,6 +872,43 @@ p {
 .mission-card h3,
 .vision-card h3 {
   margin-bottom: var(--spacing-3);
+}
+
+/* Mission / Vision flip interaction */
+.flip-card {
+  cursor: pointer;
+  perspective: 1200px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  transform-style: preserve-3d;
+  transition: transform 600ms var(--easing-soft);
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  padding: var(--spacing-6);
+  padding-left: calc(var(--spacing-6) + 44px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  /* front: only title */
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }
 
 @media (max-width: 900px) {
