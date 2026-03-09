@@ -900,7 +900,8 @@ p {
 }
 
 .flip-card-front {
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .flip-card-front h3 {
@@ -915,6 +916,33 @@ p {
 
 .flip-card.is-flipped .flip-card-inner {
   transform: rotateY(180deg);
+}
+
+.mv-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.mv-title-text {
+  display: inline-block;
+}
+
+.mv-title-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 25% 25%, #ffffff 0, #e1faf4 40%, #c7efe4 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  box-shadow: 0 8px 22px rgba(7, 28, 59, 0.18);
+}
+
+.mv-title-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 @media (max-width: 900px) {
