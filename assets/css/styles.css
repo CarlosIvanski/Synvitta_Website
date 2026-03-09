@@ -996,7 +996,7 @@ p {
   justify-content: flex-start;
   gap: 0;
   padding: var(--spacing-6);
-  padding-top: var(--spacing-4);
+  padding-top: var(--spacing-2);
 }
 
 .pipeline-card-back .card-block-desc {
