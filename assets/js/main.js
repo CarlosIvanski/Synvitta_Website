@@ -147,5 +147,25 @@ document.addEventListener("DOMContentLoaded", () => {
       card.setAttribute("aria-label", `${title.textContent.trim()} details`);
     }
   });
+
+  // Hero text visibility based on video logo
+  const heroVideo = document.querySelector(".hero-video");
+  const heroContent = document.querySelector(".hero-content");
+
+  if (heroVideo instanceof HTMLVideoElement && heroContent instanceof HTMLElement) {
+    const HIDE_WINDOW_SECONDS = 3; // hide text during final seconds when logo is on screen
+
+    const updateHeroVisibility = () => {
+      const duration = heroVideo.duration;
+      if (!duration || Number.isNaN(duration)) return;
+
+      const current = heroVideo.currentTime;
+      const shouldHide = current >= duration - HIDE_WINDOW_SECONDS;
+      heroContent.classList.toggle("hero-content--hidden", shouldHide);
+    };
+
+    heroVideo.addEventListener("loadedmetadata", updateHeroVisibility);
+    heroVideo.addEventListener("timeupdate", updateHeroVisibility);
+  }
 });
 
