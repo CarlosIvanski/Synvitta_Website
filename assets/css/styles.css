@@ -837,6 +837,7 @@ p {
 
 .about-grid {
   align-self: stretch;
+  align-items: start;
   gap: var(--spacing-6);
 }
 
@@ -881,6 +882,11 @@ p {
 .mission-card h3,
 .vision-card h3 {
   margin-bottom: var(--spacing-3);
+}
+
+.mission-card .flip-card-face,
+.vision-card .flip-card-face {
+  justify-content: flex-start;
 }
 
 /* Mission / Vision flip interaction */
