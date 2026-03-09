@@ -852,11 +852,12 @@ p {
   position: absolute;
   left: var(--spacing-6);
   top: var(--spacing-6);
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0, #e1faf4 40%, #c7efe4 100%);
+  border: 1px solid rgba(29, 164, 139, 0.5);
+  box-shadow: 0 8px 20px rgba(7, 28, 59, 0.16);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -864,8 +865,8 @@ p {
 }
 
 .mv-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
 }
 
