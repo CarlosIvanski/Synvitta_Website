@@ -153,14 +153,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroContent = document.querySelector(".hero-content");
 
   if (heroVideo instanceof HTMLVideoElement && heroContent instanceof HTMLElement) {
-    const HIDE_WINDOW_SECONDS = 3; // hide text during final seconds when logo is on screen
+    const SHOW_PORTION = 0.65; // show text only in first ~65% do vídeo
 
     const updateHeroVisibility = () => {
       const duration = heroVideo.duration;
-      if (!duration || Number.isNaN(duration)) return;
+      if (!duration || Number.isNaN(duration)) {
+        heroContent.classList.remove("hero-content--hidden");
+        return;
+      }
 
       const current = heroVideo.currentTime;
-      const shouldHide = current >= duration - HIDE_WINDOW_SECONDS;
+      const progress = current / duration;
+      const shouldHide = progress >= SHOW_PORTION;
       heroContent.classList.toggle("hero-content--hidden", shouldHide);
     };
 
