@@ -961,7 +961,7 @@ p {
 
 /* Pipeline flip cards: front = clean label + icon + title */
 .pipeline-card-block .flip-card-inner {
-  min-height: 200px;
+  min-height: 300px;
 }
 
 .pipeline-card-front {
