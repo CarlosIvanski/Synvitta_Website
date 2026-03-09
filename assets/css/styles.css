@@ -906,6 +906,11 @@ p {
   align-items: center;
 }
 
+.mission-card .flip-card-inner,
+.vision-card .flip-card-inner {
+  min-height: 200px;
+}
+
 /* Mission / Vision flip interaction */
 .flip-card {
   cursor: pointer;
