@@ -996,7 +996,7 @@ p {
   text-align: center;
   justify-content: flex-start;
   gap: 0;
-  padding-top: var(--spacing-4);
+  padding-top: 0;
 }
 
 .pipeline-card-back .card-block-desc {
