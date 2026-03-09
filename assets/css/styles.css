@@ -953,10 +953,11 @@ p {
   height: 16px;
 }
 
-/* Pipeline flip cards: override front alignment to behave like standard cards */
-.pipeline-card-block .flip-card-front {
+/* Pipeline flip cards: front = clean label + icon + title */
+.pipeline-card-front {
   align-items: flex-start;
   text-align: left;
+  gap: var(--spacing-3);
 }
 
 .pipeline-card-back .card-block-desc {
