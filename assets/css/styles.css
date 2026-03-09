@@ -1102,9 +1102,9 @@ p {
 }
 
 .product-card-blue {
-  background: linear-gradient(135deg, rgba(7, 28, 59, 0.09) 0%, rgba(7, 28, 59, 0.14) 100%);
+  background: linear-gradient(135deg, #d4e2ff 0%, #c0d4ff 45%, #a9c4ff 100%);
   color: var(--color-text);
-  border: 1px solid rgba(7, 28, 59, 0.12);
+  border: 1px solid rgba(37, 66, 138, 0.5);
 }
 
 .product-layout {
@@ -1134,6 +1134,12 @@ p {
 .product-info-card .product-accordion {
   border-top: none;
   padding-top: 0;
+}
+
+.product-info-card:hover {
+  background: linear-gradient(135deg, #cfdcff 0%, #b9ceff 45%, #a3c0ff 100%);
+  box-shadow: 0 18px 42px rgba(7, 28, 59, 0.22);
+  transform: translateY(-3px);
 }
 
 .product-card-blue h3,
@@ -1428,7 +1434,10 @@ p {
 }
 
 .card-block:hover {
-  box-shadow: 0 8px 28px rgba(7, 28, 59, 0.1);
+  background: linear-gradient(135deg, #cfdcff 0%, #b9ceff 45%, #a3c0ff 100%);
+  border-color: rgba(7, 28, 59, 0.6);
+  box-shadow: 0 18px 42px rgba(7, 28, 59, 0.22);
+  transform: translateY(-4px);
 }
 
 .card-block-label {
