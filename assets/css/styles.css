@@ -962,6 +962,7 @@ p {
 
 .pipeline-card-back .card-block-desc {
   font-style: italic;
+  margin-bottom: var(--spacing-2);
 }
 
 @media (max-width: 900px) {
