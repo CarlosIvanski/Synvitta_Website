@@ -893,7 +893,6 @@ p {
   position: absolute;
   inset: 0;
   padding: var(--spacing-6);
-  padding-left: calc(var(--spacing-6) + 44px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -901,11 +900,17 @@ p {
 }
 
 .flip-card-front {
-  /* front: only title */
+  align-items: flex-start;
+}
+
+.flip-card-front h3 {
+  font-size: 1.15rem;
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
+  align-items: flex-start;
+  gap: var(--spacing-3);
 }
 
 .flip-card.is-flipped .flip-card-inner {
