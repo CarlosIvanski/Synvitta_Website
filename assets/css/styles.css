@@ -959,9 +959,13 @@ p {
 }
 
 .pipeline-card-front {
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   gap: var(--spacing-3);
+}
+
+.pipeline-card-front .card-block-title {
+  text-align: center;
 }
 
 .pipeline-card-back {
