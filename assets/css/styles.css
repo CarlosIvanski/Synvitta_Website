@@ -996,14 +996,13 @@ p {
   text-align: center;
   justify-content: flex-start;
   gap: 0;
-  padding-top: var(--spacing-4);
+  padding-top: var(--spacing-2);
 }
 
 .pipeline-card-back .card-block-desc {
   font-style: italic;
   margin: 0;
-  padding-top: 0;
-  padding-bottom: var(--spacing-3);
+  padding: 0 0 var(--spacing-3);
   border-bottom: 1px solid rgba(7, 28, 59, 0.25);
   width: 100%;
   max-width: 260px;
@@ -1020,6 +1019,7 @@ p {
   text-align: center;
   max-width: 280px;
   align-self: center;
+  color: var(--color-text);
 }
 
 @media (max-width: 900px) {
