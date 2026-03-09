@@ -996,12 +996,13 @@ p {
   text-align: center;
   justify-content: flex-start;
   gap: 0;
-  padding-top: var(--spacing-5);
+  padding-top: var(--spacing-4);
 }
 
 .pipeline-card-back .card-block-desc {
   font-style: italic;
   margin: 0;
+  padding-top: 0;
   padding-bottom: var(--spacing-3);
   border-bottom: 1px solid rgba(7, 28, 59, 0.25);
   width: 100%;
@@ -1009,11 +1010,13 @@ p {
   color: var(--color-text-soft);
   align-self: center;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .pipeline-card-back .card-block-text {
   margin-top: var(--spacing-3);
   margin-bottom: 0;
+  padding-top: var(--spacing-3);
   text-align: center;
   max-width: 280px;
   align-self: center;
