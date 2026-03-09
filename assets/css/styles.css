@@ -992,7 +992,7 @@ p {
 }
 
 .pipeline-card-back {
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   gap: 0;
   padding: var(--spacing-6);
@@ -1002,7 +1002,7 @@ p {
 .pipeline-card-back .card-block-desc {
   font-style: italic;
   font-size: 0.95rem;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 0 var(--spacing-3);
   border-bottom: 2px solid rgba(7, 28, 59, 0.35);
   width: 100%;
@@ -1011,6 +1011,7 @@ p {
   color: var(--color-text-soft);
   text-align: center;
   flex-shrink: 0;
+  align-self: center;
 }
 
 .pipeline-card-back .card-block-text {
