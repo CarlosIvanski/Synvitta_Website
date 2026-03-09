@@ -1020,7 +1020,7 @@ p {
 
 /* Card 3: título mais curto em 1 linha - empurrar para baixo para alinhar com os outros */
 .pipeline-grid-block article:nth-child(3) .card-block-desc {
-  padding-top: 1em;
+  padding-top: 1.5em;
 }
 
 .pipeline-card-back .card-block-text {
