@@ -996,7 +996,7 @@ p {
   text-align: center;
   justify-content: flex-start;
   gap: 0;
-  padding-top: 0;
+  padding-top: var(--spacing-5);
 }
 
 .pipeline-card-back .card-block-desc {
@@ -1008,6 +1008,7 @@ p {
   max-width: 260px;
   color: var(--color-text-soft);
   align-self: center;
+  text-align: center;
 }
 
 .pipeline-card-back .card-block-text {
