@@ -1206,8 +1206,8 @@ p {
 }
 
 .team-avatar {
-  width: 116px;
-  height: 116px;
+  width: 150px;
+  height: 150px;
   border-radius: 999px;
   background: radial-gradient(circle at 30% 20%, #ffffff 0, #e6faf5 35%, var(--color-accent) 100%);
   border: 3px solid var(--color-accent);
