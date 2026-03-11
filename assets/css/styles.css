@@ -1162,6 +1162,109 @@ p {
   background: linear-gradient(180deg, var(--color-surface) 0%, rgba(7, 28, 59, 0.02) 100%);
 }
 
+.section-team {
+  background: linear-gradient(180deg, rgba(7, 28, 59, 0.03) 0%, rgba(7, 28, 59, 0.08) 50%, rgba(7, 28, 59, 0.03) 100%);
+}
+
+.team-header {
+  margin-bottom: var(--spacing-7);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--spacing-5);
+}
+
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .team-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.team-card {
+  background: linear-gradient(135deg, #0b1730 0%, #071c3b 55%, #020818 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: var(--spacing-5);
+  color: #e5e7eb;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(29, 164, 139, 0.3), transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.team-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #ffffff 0, #e1faf4 40%, #0b1120 100%);
+  border: 1px solid rgba(29, 164, 139, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+  position: relative;
+  z-index: 1;
+}
+
+.team-avatar-initials {
+  font-family: var(--font-title);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.team-name {
+  margin-top: var(--spacing-3);
+  font-size: 1.05rem;
+  color: #f9fafb;
+  position: relative;
+  z-index: 1;
+}
+
+.team-role {
+  font-size: 0.88rem;
+  color: #cbd5f5;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  position: relative;
+  z-index: 1;
+}
+
+.team-bio {
+  margin-top: var(--spacing-2);
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  position: relative;
+  z-index: 1;
+}
+
 .section-contact {
   background: linear-gradient(180deg, rgba(7, 28, 59, 0.04) 0%, var(--color-surface) 50%);
 }
