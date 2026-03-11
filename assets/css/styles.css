@@ -1170,10 +1170,28 @@ p {
   margin-bottom: var(--spacing-7);
 }
 
+.team-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.team-group-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-4);
+}
+
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-5);
+}
+
+.team-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 @media (max-width: 1200px) {
@@ -1208,8 +1226,8 @@ p {
 }
 
 .team-avatar {
-  width: 150px;
-  height: 150px;
+  width: 136px;
+  height: 136px;
   border-radius: 999px;
   background: radial-gradient(circle at 30% 20%, #ffffff 0, #e6faf5 35%, var(--color-accent) 100%);
   border: 3px solid var(--color-accent);
