@@ -1206,15 +1206,15 @@ p {
 }
 
 .team-avatar {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: 999px;
-  background: radial-gradient(circle at 25% 20%, #ffffff 0, #e1faf4 40%, var(--color-accent) 100%);
-  border: 1px solid rgba(29, 164, 139, 0.7);
+  background: radial-gradient(circle at 30% 20%, #ffffff 0, #e6faf5 35%, var(--color-accent) 100%);
+  border: 3px solid var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+  box-shadow: 0 8px 20px rgba(7, 28, 59, 0.25);
   position: relative;
   z-index: 1;
   overflow: hidden;
