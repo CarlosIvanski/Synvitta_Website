@@ -1269,6 +1269,10 @@ p {
   object-position: center 15%;
 }
 
+.team-avatar-image--zoom {
+  transform: scale(1.1);
+}
+
 .team-avatar-initials {
   font-family: var(--font-title);
   font-weight: 600;
