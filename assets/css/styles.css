@@ -1248,12 +1248,12 @@ p {
   width: 136px;
   height: 136px;
   border-radius: 999px;
-  background: radial-gradient(circle at 30% 20%, #ffffff 0, #e6faf5 35%, var(--color-accent) 100%);
+  background: #ffffff;
   border: 3px solid var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(7, 28, 59, 0.25);
+  box-shadow: 0 8px 20px rgba(7, 28, 59, 0.15);
   position: relative;
   z-index: 1;
   overflow: hidden;
