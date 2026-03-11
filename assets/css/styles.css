@@ -1180,41 +1180,27 @@ p {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-3);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.22em;
+  color: var(--color-text-soft);
   margin-bottom: var(--spacing-4);
 }
 
 .team-group-title-icon {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   border-radius: 999px;
-  border: 2px solid var(--color-primary);
+  border: 1px solid rgba(15, 23, 42, 0.25);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  background: radial-gradient(circle at 30% 20%, rgba(29, 164, 139, 0.45), transparent 55%);
 }
 
-.team-group-title--leadership .team-group-title-icon::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  border: 2px solid var(--color-primary);
-  border-bottom: none;
-  position: relative;
-  transform: translateY(1px);
-}
-
-.team-group-title--science .team-group-title-icon::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 20%, #ffffff 0, #e1faf4 40%, var(--color-accent) 100%);
+.team-group-title span:last-child {
+  letter-spacing: 0.22em;
 }
 
 .team-grid {
