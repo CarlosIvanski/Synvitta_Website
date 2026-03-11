@@ -1270,7 +1270,11 @@ p {
 }
 
 .team-avatar-image--zoom {
-  transform: scale(1.18);
+  transform: scale(1.24);
+}
+
+.team-avatar-image--down {
+  object-position: center 35%;
 }
 
 .team-avatar-initials {
