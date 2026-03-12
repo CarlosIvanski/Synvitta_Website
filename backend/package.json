@@ -1,0 +1,17 @@
+{
+  "name": "synvitta-forms",
+  "version": "1.0.0",
+  "description": "Contact form backend for Synvitta Diagnostics",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "nodemailer": "^6.9.16"
+  }
+}

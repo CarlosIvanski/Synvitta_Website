@@ -84,14 +84,23 @@ document.addEventListener("DOMContentLoaded", () => {
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  // Contact form (front-end only placeholder)
+  // Contact form (AJAX submit to backend)
   if (contactForm && formFeedback) {
-    contactForm.addEventListener("submit", (event) => {
+    const formsApiUrl =
+      (typeof import.meta !== "undefined" && import.meta.env?.VITE_FORMS_API_URL) ||
+      (typeof window !== "undefined" && window.location?.hostname === "localhost"
+        ? "http://localhost:3000"
+        : "https://forms.synvittadiagnostics.com");
+
+    contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const nameInput = contactForm.querySelector("#name");
       const emailInput = contactForm.querySelector("#email");
       const interestSelect = contactForm.querySelector("#interest");
+      const companyInput = contactForm.querySelector("#company");
+      const messageInput = contactForm.querySelector("#message");
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
 
       let hasError = false;
 
@@ -112,13 +121,53 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Placeholder behavior – integrate with backend or form service
-      formFeedback.textContent =
-        "Thank you for contacting Synvitta Diagnostics. Our team will review your request and respond shortly.";
-      formFeedback.classList.remove("form-feedback--error");
-      formFeedback.classList.add("form-feedback--success");
+      formFeedback.textContent = "";
+      formFeedback.classList.remove("form-feedback--error", "form-feedback--success");
 
-      contactForm.reset();
+      if (submitBtn instanceof HTMLButtonElement) {
+        submitBtn.disabled = true;
+      }
+      formFeedback.textContent = "Sending…";
+
+      const payload = {
+        name: (nameInput && nameInput instanceof HTMLInputElement ? nameInput.value : "").trim(),
+        email: (emailInput && emailInput instanceof HTMLInputElement ? emailInput.value : "").trim(),
+        interest:
+          (interestSelect && interestSelect instanceof HTMLSelectElement ? interestSelect.value : "").trim(),
+        company:
+          companyInput && companyInput instanceof HTMLInputElement ? companyInput.value.trim() : "",
+        message:
+          messageInput && messageInput instanceof HTMLTextAreaElement ? messageInput.value.trim() : "",
+      };
+
+      try {
+        const res = await fetch(`${formsApiUrl}/api/contact`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = res.ok ? await res.json().catch(() => ({})) : await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          throw new Error(data?.error || "Failed to send message. Please try again.");
+        }
+
+        formFeedback.textContent =
+          "Thank you for contacting Synvitta Diagnostics. Our team will review your request and respond shortly.";
+        formFeedback.classList.remove("form-feedback--error");
+        formFeedback.classList.add("form-feedback--success");
+        contactForm.reset();
+      } catch (err) {
+        formFeedback.textContent =
+          err instanceof Error ? err.message : "Something went wrong. Please try again later.";
+        formFeedback.classList.remove("form-feedback--success");
+        formFeedback.classList.add("form-feedback--error");
+      } finally {
+        if (submitBtn instanceof HTMLButtonElement) {
+          submitBtn.disabled = false;
+        }
+      }
     });
   }
 

@@ -9,3 +9,13 @@ services:
     # Quando tiver SSL, use um proxy (ex.: Caddy/Traefik) ou descomente:
     # ports:
     #   - "8080:80"
+
+  forms:
+    build: ./backend
+    image: synvitta-forms:latest
+    container_name: synvitta-forms
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env

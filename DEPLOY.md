@@ -25,7 +25,16 @@ Substitua `SEU_USUARIO` pelo seu usuário do GitHub e o nome do repositório se 
 ### Pré-requisitos
 
 - Servidor com **Docker** e **Docker Compose** instalados
-- Porta **80** liberada no firewall
+- Portas **80** (e **443** se usar SSL) liberadas no firewall
+
+### Configurar variáveis do formulário de contato
+
+Antes de subir os containers, crie o arquivo `.env` com as credenciais SMTP:
+
+```bash
+cp .env.example .env
+# Edite .env com suas configurações SMTP e CONTACT_EMAIL
+```
 
 ### Comandos no servidor
 
@@ -34,13 +43,17 @@ Substitua `SEU_USUARIO` pelo seu usuário do GitHub e o nome do repositório se 
 git clone https://github.com/SEU_USUARIO/synvitta_website.git
 cd synvitta_website
 
-# Build da imagem e subir o container
+# Criar .env a partir do exemplo (se ainda não fez)
+cp .env.example .env
+# Edite .env com SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_EMAIL
+
+# Build das imagens e subir os containers
 docker compose up -d --build
 ```
 
-O site ficará disponível em **http://IP_DO_SERVIDOR** (porta 80).
+O site ficará disponível em **http://IP_DO_SERVIDOR:1010** (web). O backend do formulário ficará em **http://IP_DO_SERVIDOR:3000**.
 
-### Atualizar o site depois de um novo push no GitHub
+### Atualizar o site e o backend depois de um novo push no GitHub
 
 ```bash
 cd synvitta_website
@@ -54,13 +67,24 @@ docker compose up -d --build
 
 No painel do seu provedor de domínio (Registro.br, GoDaddy, Cloudflare, etc.):
 
-1. Crie um registro **A** (ou **AAAA** se usar IPv6):
-   - **Nome/host:** `@` (para raiz, ex: synvitta.com) e/ou `www` (para www.synvitta.com)
-   - **Valor/apontamento:** IP do seu servidor
+1. Crie registros **A** (ou **AAAA** se usar IPv6):
+   - **Nome/host:** `@` ou `www` → IP do servidor (para o site)
+   - **Nome/host:** `forms` → IP do servidor (para o endpoint do formulário: `forms.synvittadiagnostics.com`)
 
 2. Aguarde a propagação do DNS (minutos a algumas horas).
 
-Depois disso, acesse **http://seudominio.com** (sem SSL por enquanto).
+Depois disso:
+- Site: **http://www.synvittadiagnostics.com** (ou domínio configurado)
+- API do formulário: **http://forms.synvittadiagnostics.com**
+
+### Proxy reverso (obrigatório em produção)
+
+O site e o backend precisam estar acessíveis via domínio. Use um proxy reverso (Nginx ou Caddy) no host:
+
+- **www.synvittadiagnostics.com** → `localhost:1010` (container web)
+- **forms.synvittadiagnostics.com** → `localhost:3000` (container forms)
+
+Com Caddy ou Nginx na frente, você pode obter SSL (HTTPS) automaticamente. O `forms` subdomínio deve receber CORS das origens permitidas (já configurado no backend para www.synvittadiagnostics.com, app.synvittadiagnostics.com).
 
 ---
 
