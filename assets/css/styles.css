@@ -1635,7 +1635,7 @@ p {
   font-size: 0.75em;   /* legível no título e no corpo de texto */
   vertical-align: super;
   line-height: 0;
-  color: var(--color-accent);
+  color: #000;
 }
 
 .product-subtitle {
