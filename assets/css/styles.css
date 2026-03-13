@@ -1586,8 +1586,9 @@ p {
 }
 
 .product-trademark {
-  font-size: 0.7rem;
+  font-size: 0.6em;   /* proporcional ao texto pai; ~padrão de marcas (™/®) */
   vertical-align: super;
+  line-height: 0;
   color: var(--color-accent);
 }
 
