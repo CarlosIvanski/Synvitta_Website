@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Contact form (AJAX submit to backend)
   if (contactForm && formFeedback) {
     const formsApiUrl =
-      (typeof import.meta !== "undefined" && import.meta.env?.VITE_FORMS_API_URL) ||
+      (typeof window !== "undefined" && window.__FORMS_API_URL) ||
       (typeof window !== "undefined" && window.location?.hostname === "localhost"
         ? "http://localhost:3000"
         : "https://forms.synvittadiagnostics.com");
