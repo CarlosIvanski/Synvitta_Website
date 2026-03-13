@@ -1430,13 +1430,19 @@ p {
 
 .product-overview h3 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 1.95rem;
 }
 
 .product-overview h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 500;
+}
+
+.product-overview .product-intro {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text);
 }
 
 .product-overview-list {
@@ -1446,7 +1452,8 @@ p {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  line-height: 1.55;
   color: var(--color-text-soft);
 }
 
@@ -1499,6 +1506,12 @@ p {
 
 .product-accordion[open] summary {
   margin-bottom: var(--spacing-4);
+}
+
+.product-accordion p,
+.product-accordion .product-overview-list {
+  font-size: 1.02rem;
+  line-height: 1.55;
 }
 
 .product-accordion .product-features {
@@ -1615,11 +1628,11 @@ p {
 }
 
 .product-main h3 {
-  font-size: 1.6rem;
+  font-size: 1.85rem;
 }
 
 .product-trademark {
-  font-size: 0.6em;   /* proporcional ao texto pai; ~padrão de marcas (™/®) */
+  font-size: 0.75em;   /* legível no título e no corpo de texto */
   vertical-align: super;
   line-height: 0;
   color: var(--color-accent);
@@ -1627,6 +1640,7 @@ p {
 
 .product-subtitle {
   margin-top: var(--spacing-2);
+  font-size: 1.1rem;
   color: var(--color-text-soft);
   font-weight: 500;
 }
@@ -1641,7 +1655,8 @@ p {
   margin: 0;
   display: grid;
   gap: var(--spacing-2);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
+  line-height: 1.55;
   color: var(--color-text-soft);
 }
 
