@@ -22,10 +22,25 @@ const ALLOWED_ORIGINS = [
   "http://localhost:1010",
 ];
 
-// Behind Nginx / reverse proxy, trust X-Forwarded-* headers
-app.set("trust proxy", true);
+// Behind a single reverse proxy (Nginx Proxy Manager), trust first proxy hop
+app.set("trust proxy", 1);
 
-app.use(helmet());
+// Helmet with CSP that still allows the inline script used on /admin
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "'unsafe-inline'"],
+        "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        "font-src": ["'self'", "https://fonts.gstatic.com", "data:"],
+        "img-src": ["'self'", "data:"],
+        "connect-src": ["'self'"],
+      },
+    },
+  })
+);
 app.use(express.json({ limit: "10kb" }));
 app.use(
   cors({
