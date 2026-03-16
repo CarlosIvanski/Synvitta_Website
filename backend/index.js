@@ -487,9 +487,11 @@ app.get("/admin", requireAdmin, (req, res) => {
         if (!iso) return "";
         const d = new Date(iso);
         if (Number.isNaN(d.getTime())) return iso;
-        return d.toLocaleString(undefined, {
+        // US format: MM/DD/YYYY, HH:MM (America/New_York)
+        return d.toLocaleString("en-US", {
+          timeZone: "America/New_York",
           year: "numeric",
-          month: "short",
+          month: "2-digit",
           day: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
