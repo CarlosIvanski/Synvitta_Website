@@ -10,6 +10,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy static site (HTML, favicon, assets, images, video, pages)
 COPY index.html /usr/share/nginx/html/
 COPY favicon.ico /usr/share/nginx/html/
+COPY googlef1ad2c88ec2c1241.html /usr/share/nginx/html/
 COPY pages /usr/share/nginx/html/pages
 COPY assets /usr/share/nginx/html/assets
 COPY images /usr/share/nginx/html/images
