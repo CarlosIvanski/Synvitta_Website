@@ -17,7 +17,6 @@ fs.mkdirSync(path.dirname(CONTACTS_STORAGE_PATH), { recursive: true });
 const ALLOWED_ORIGINS = [
   "https://www.synvittadiagnostics.com",
   "https://synvittadiagnostics.com",
-  "https://app.synvittadiagnostics.com",
   "http://localhost:5173",
   "http://localhost:1010",
 ];
