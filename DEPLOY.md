@@ -5,18 +5,16 @@
 No seu computador, na pasta do projeto:
 
 ```bash
-# Se ainda não inicializou o repositório
-git init
 git add .
-git commit -m "Site Synvitta + Docker"
-
-# Crie um repositório no GitHub (github.com → New repository) e depois:
-git remote add origin https://github.com/SEU_USUARIO/synvitta_website.git
-git branch -M main
-git push -u origin main
+git commit -m "Sua mensagem"
+git push origin main
 ```
 
-Substitua `SEU_USUARIO` pelo seu usuário do GitHub e o nome do repositório se for diferente.
+Use **SSH** no seu PC (sem pedir senha do GitHub):
+
+```bash
+git remote set-url origin git@github.com:CarlosIvanski/Synvitta_Website.git
+```
 
 ---
 
@@ -26,56 +24,114 @@ Substitua `SEU_USUARIO` pelo seu usuário do GitHub e o nome do repositório se 
 
 - Servidor com **Docker** e **Docker Compose** instalados
 - Portas **80** (e **443** se usar SSL) liberadas no firewall
+- Acesso SSH à VPS (chave ou senha do **servidor**, não do GitHub)
 
 ### Configurar variáveis do formulário de contato
 
-Antes de subir os containers, crie o arquivo `.env` com as credenciais SMTP:
-
 ```bash
-cp .env.example .env
-# Edite .env com suas configurações SMTP e CONTACT_EMAIL
-```
-
-### Comandos no servidor
-
-```bash
-# Clone do repositório (ou, se já clonou antes, apenas git pull)
-git clone https://github.com/SEU_USUARIO/synvitta_website.git
-cd synvitta_website
-
-# Criar .env a partir do exemplo (se ainda não fez)
 cp .env.example .env
 # Edite .env com SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_EMAIL
-
-# Build das imagens e subir os containers
-docker compose up -d --build
 ```
 
-O site ficará disponível em **http://IP_DO_SERVIDOR:1010** (web). O backend do formulário ficará em **http://IP_DO_SERVIDOR:3000**.
+### Clone / pull via SSH (sem senha do GitHub)
 
-### Git LFS (vídeos)
-
-Vídeos grandes (ex.: `video/Syntrep_Horizontal.mp4`) usam **Git LFS**. No servidor, instale o LFS uma vez e baixe os arquivos reais antes de cada build:
+**Uma vez na VPS** — crie chave SSH só para o GitHub:
 
 ```bash
-git lfs install
-git lfs pull
+ssh-keygen -t ed25519 -C "synvitta-vps" -f ~/.ssh/id_ed25519_github -N ""
+cat ~/.ssh/id_ed25519_github.pub
 ```
 
-Sem isso, o `docker build` pode copiar um **ponteiro de texto** no lugar do MP4 — o player fica preto e não reproduz.
+Copie a linha que aparece e adicione em **GitHub → Settings → SSH and GPG keys → New SSH key**.
 
-### Atualizar o site e o backend depois de um novo push no GitHub
+Configure o Git para usar essa chave:
 
 ```bash
-cd synvitta_website
-git pull
-git lfs pull
-docker compose up -d --build
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+cat >> ~/.ssh/config << 'EOF'
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_github
+  IdentitiesOnly yes
+EOF
+chmod 600 ~/.ssh/config
+```
+
+Teste (deve responder com seu usuário GitHub):
+
+```bash
+ssh -T git@github.com
+```
+
+Clone ou troque o remote (se já clonou com HTTPS):
+
+```bash
+git clone git@github.com:CarlosIvanski/Synvitta_Website.git
+cd Synvitta_Website
+
+# ou, se o repo já existe:
+git remote set-url origin git@github.com:CarlosIvanski/Synvitta_Website.git
+git remote -v
 ```
 
 ---
 
-## 3. Apontar o domínio
+## 3. Vídeo SynTREP (~173 MB) — enviar via SCP (recomendado)
+
+O vídeo está no **Git LFS**. Evite `git lfs pull` na VPS se der erro de credencial.
+
+**Do seu Windows** (PowerShell, na pasta do projeto), envie o MP4 direto por SSH:
+
+```powershell
+.\scripts\deploy-video.ps1
+```
+
+Ou manualmente:
+
+```powershell
+scp "C:\Users\losbr\Documents\GitHub\Synvitta_Website\video\Syntrep_Horizontal.mp4" admincarlos@10.0.0.1:/opt/website/Synvitta_Website/video/
+```
+
+Na VPS, confirme o tamanho de **ambos** os MP4 (**~173M** e **~13M**, não 134 bytes) e rebuild:
+
+```bash
+ls -lh /opt/website/Synvitta_Website/video/*.mp4
+docker compose build web
+docker compose up -d web
+```
+
+Se `video_synvitta.mp4` (hero) ainda tiver ~134 bytes, envie também do PC:
+
+```powershell
+scp "C:\Users\losbr\Documents\GitHub\Synvitta_Website\video\video_synvitta.mp4" admincarlos@10.0.0.1:~/video_synvitta.mp4
+```
+
+Na VPS:
+
+```bash
+sudo cp ~/video_synvitta.mp4 /opt/website/Synvitta_Website/video/video_synvitta.mp4
+docker compose build web && docker compose up -d web
+```
+
+---
+
+## 4. Subir / atualizar containers
+
+```bash
+cd /opt/website/Synvitta_Website
+git pull
+docker compose up -d --build
+```
+
+Se houver **vídeo novo**, rode o `deploy-video.ps1` do PC antes do rebuild (seção 3).
+
+O site: **http://IP_DO_SERVIDOR:1010**. Formulário: **http://IP_DO_SERVIDOR:3000**.
+
+---
+
+## 5. Apontar o domínio
 
 No painel do seu provedor de domínio (Registro.br, GoDaddy, Cloudflare, etc.):
 
@@ -100,7 +156,7 @@ Com Caddy ou Nginx na frente, você pode obter SSL (HTTPS) automaticamente. O `f
 
 ---
 
-## 4. SSL (HTTPS) – depois
+## 6. SSL (HTTPS) – depois
 
 Quando quiser ativar HTTPS:
 
