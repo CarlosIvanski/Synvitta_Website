@@ -245,11 +245,15 @@
                 <video
                   class="product-video"
                   src="video/Syntrep_Horizontal.mp4"
+                  type="video/mp4"
                   controls
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-label="SynTREP product overview video"
                 ></video>
+                <p class="product-video-error" id="product-video-error" hidden>
+                  The product video could not be loaded. If you manage this site, run <code>git lfs pull</code> on the server and rebuild the web container.
+                </p>
               </div>
             </div>
 

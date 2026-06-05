@@ -53,11 +53,23 @@ docker compose up -d --build
 
 O site ficará disponível em **http://IP_DO_SERVIDOR:1010** (web). O backend do formulário ficará em **http://IP_DO_SERVIDOR:3000**.
 
+### Git LFS (vídeos)
+
+Vídeos grandes (ex.: `video/Syntrep_Horizontal.mp4`) usam **Git LFS**. No servidor, instale o LFS uma vez e baixe os arquivos reais antes de cada build:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+Sem isso, o `docker build` pode copiar um **ponteiro de texto** no lugar do MP4 — o player fica preto e não reproduz.
+
 ### Atualizar o site e o backend depois de um novo push no GitHub
 
 ```bash
 cd synvitta_website
 git pull
+git lfs pull
 docker compose up -d --build
 ```
 

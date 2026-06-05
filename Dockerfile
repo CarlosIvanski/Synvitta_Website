@@ -16,6 +16,14 @@ COPY assets /usr/share/nginx/html/assets
 COPY images /usr/share/nginx/html/images
 COPY video /usr/share/nginx/html/video
 
+# Fail the build if Git LFS pointers were copied instead of real MP4 files
+RUN for f in /usr/share/nginx/html/video/*.mp4; do \
+      test -f "$f" || continue; \
+      head -c 120 "$f" | grep -q 'git-lfs' && \
+      echo "ERROR: $f is a Git LFS pointer. On the server run: git lfs pull && docker compose build web" && \
+      exit 1; \
+    done
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

@@ -220,5 +220,33 @@ document.addEventListener("DOMContentLoaded", () => {
     heroVideo.addEventListener("loadedmetadata", updateHeroVisibility);
     heroVideo.addEventListener("timeupdate", updateHeroVisibility);
   }
+
+  const productVideo = document.querySelector(".product-video");
+  const productVideoError = document.getElementById("product-video-error");
+
+  if (productVideo instanceof HTMLVideoElement) {
+    const showProductVideoError = () => {
+      productVideo.classList.add("product-video--failed");
+      if (productVideoError instanceof HTMLElement) {
+        productVideoError.hidden = false;
+      }
+    };
+
+    productVideo.addEventListener("error", showProductVideoError);
+
+    productVideo.addEventListener("loadeddata", () => {
+      if (productVideoError instanceof HTMLElement) {
+        productVideoError.hidden = true;
+      }
+    });
+
+    // LFS pointer files often fail without firing error in some browsers — probe duration
+    productVideo.addEventListener("loadedmetadata", () => {
+      const duration = productVideo.duration;
+      if (!Number.isFinite(duration) || duration <= 0) {
+        showProductVideoError();
+      }
+    });
+  }
 });
 
